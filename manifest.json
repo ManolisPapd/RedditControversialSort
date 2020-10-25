@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name" : "RCS",
     "description": "RCS enables the option for controversial sorting on Reddit's redisign.",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "author": "mpapd",
     "icons": {
         "16": "resources/images/16_rcs_icon.png",
@@ -16,7 +16,7 @@
             "js": ["scripts/script.js"],
             "css" : ["styles/style.css"]
         }
-    ],
-    "permissions": ["activeTab","declarativeContent"]
+    ]
+    
 
 }
