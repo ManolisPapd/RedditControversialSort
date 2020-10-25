@@ -70,7 +70,7 @@ function findHomePageSortingParent(element){
 function addControversialItem(element){    
     /* Hyperlink properties */
     var controversialItem = document.createElement("a");
-    controversialItem.className = element.getAttribute("class");
+    controversialItem.className = element.getAttribute("class").split(" ")[0]; //Split because the second part of class makes it appear selected
     controversialItem.href = CONTROVERSIAL_URL;
 
     /* svg class  */
@@ -113,7 +113,6 @@ function domObserver(){
                 **/
                 if(currentItem !== mutation.target.baseURI){
                     currentItem = mutation.target.baseURI;
-                    console.log("Mutation: ", currentItem);
                     counter = 0;
                     findHomePageSortingParent(document.body);
                     
