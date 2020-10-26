@@ -7,18 +7,31 @@ const NEW_URL = "/new/";
 const REDDIT_BASE_URL =  "https://www.reddit.com";
 
 
-
-
 domObserver();
 
 var counter = 0;
 var currentItem = null;
 var controversialEnabled = false;
+var pattern = /[\/]r[\/].*/i;
+var subName = "";
 
-//Potentional fix for Issue #7
+//Controversial item will be added after DOM is loaded
 addEventListener("load", function(){ 
     console.log("RCS: DOM is loaded");
-    findHomePageSortingParent(document.body);
+    counter = 0;
+    currentItem = null;
+    controversialEnabled = false;
+    //Don't create the item if the first page is a subreddit
+    if(!window.location.href.match(pattern)){
+        findHomePageSortingParent(document.body);
+    }
+    else{
+        console.log("RCS: Controversial Item For Subreddit -> ", window.location.href);
+        subName = window.location.href.match(pattern)[0];
+        subName = subName.slice(0, -1);
+        findSubredditSortingParent(document.body)
+    }
+    
  });
 
 
@@ -69,6 +82,53 @@ function findHomePageSortingParent(element){
     
 }
 
+function findSubredditSortingParent(element){
+
+    if(element.hasChildNodes()){              
+        
+        if(element.getAttribute("href") === subName+HOT_URL){
+            if(counter === 1){
+                /*  Handling when controversial options activated
+                    Checking if controversial option is activated in order to deactivate it.
+                    Two cases when controversial item present:
+                    - Reddit's controversial button exists two steps above the menu items.
+                    - Switching between items
+                */
+
+                
+                /**
+                 * Handling controversial when switching between items
+                 */
+                var menuParentDiv = element.parentElement.childNodes;
+                for(let menuItem of menuParentDiv){
+                    if(menuItem.getAttribute("href") === subName+CONTROVERSIAL_URL){
+                        controversialEnabled = true;
+                    }
+                }
+                if(!controversialEnabled){
+                    /**
+                     * Handling Reddit's controversial item, which appears two steps above.
+                     */
+                    var menuGrandParentDiv = element.parentElement.parentElement.childNodes;
+                    if(menuGrandParentDiv[2].getAttribute("href") !== subName+CONTROVERSIAL_URL){
+                        addControversialItem(element);
+                    }
+                }
+
+            }
+            else{
+                counter++;
+            }
+            
+        }
+        else{
+            element.childNodes.forEach(findSubredditSortingParent);
+        }
+        
+        
+    }
+}
+
 /**
  * Adds the controversial item on the menu
  * @param {*} element 
@@ -77,7 +137,7 @@ function addControversialItem(element){
     /* Hyperlink properties */
     var controversialItem = document.createElement("a");
     controversialItem.className = element.getAttribute("class").split(" ")[0]; //Split because the second part of class makes it appear selected
-    controversialItem.href = CONTROVERSIAL_URL;
+    controversialItem.href = subName+CONTROVERSIAL_URL;
 
     /* svg class  */
 
@@ -129,14 +189,25 @@ function domObserver(){
             /**
              * Handling navigation to home page.
              */
-            if( mutation.target.baseURI === REDDIT_BASE_URL+"/"){
+            if(mutation.target.baseURI === REDDIT_BASE_URL+"/"){
                 if(currentItem !== null && currentItem !== mutation.target.baseURI ){ //currentItem won't be null when tab is active
                     counter = 0;
                     currentItem = mutation.target.baseURI;
                     findHomePageSortingParent(document.body);
                 }
+            }
+
+            /**
+             * Handling subreddits
+             */
+            
+            if(mutation.target.baseURI.match(pattern)){
+                if(currentItem !== mutation.target.baseURI ){ 
+
+                }
                 
             }
+
         }
 
         
