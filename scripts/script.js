@@ -8,16 +8,23 @@ const REDDIT_BASE_URL =  "https://www.reddit.com";
 
 
 
+
 domObserver();
 
 var counter = 0;
 var currentItem = null;
 var controversialEnabled = false;
 
-findHomePageSortingParent(document.body);
+//Potentional fix for Issue #7
+addEventListener("load", function(){ 
+    console.log("RCS: DOM is loaded");
+    findHomePageSortingParent(document.body);
+ });
 
 
 function findHomePageSortingParent(element){
+
+    
     if(element.hasChildNodes()){
         if(element.getAttribute("href") === HOT_URL){
             if(counter === 1){
@@ -118,6 +125,10 @@ function domObserver(){
                 }
                 
             }
+
+            /**
+             * Handling navigation to home page.
+             */
             if( mutation.target.baseURI === REDDIT_BASE_URL+"/"){
                 if(currentItem !== null && currentItem !== mutation.target.baseURI ){ //currentItem won't be null when tab is active
                     counter = 0;
