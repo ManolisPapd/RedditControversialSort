@@ -83,10 +83,10 @@ function findHomePageSortingParent(element){
 }
 
 function findSubredditSortingParent(element){
-
+    
     if(element.hasChildNodes()){              
-        
         if(element.getAttribute("href") === subName+HOT_URL){
+            
             if(counter === 1){
                 /*  Handling when controversial options activated
                     Checking if controversial option is activated in order to deactivate it.
@@ -169,6 +169,7 @@ function domObserver(){
 
     var observer = new MutationObserver(function(mutations, observer) {
         for(let mutation of mutations){
+            
             if(mutation.target.baseURI === REDDIT_BASE_URL+HOT_URL || 
             mutation.target.baseURI === REDDIT_BASE_URL+BEST_URL || 
             mutation.target.baseURI === REDDIT_BASE_URL+NEW_URL ||
@@ -199,14 +200,26 @@ function domObserver(){
 
             /**
              * Handling subreddits
+             * When user visits from homepage, only mutation seems to be triggered.
+             * This is causing issue because DOM hasn't finished yet.
+             * The first mutation is a style.
+             * The last mutation seems to be title.
              */
-            
-            if(mutation.target.baseURI.match(pattern)){
-                if(currentItem !== mutation.target.baseURI ){ 
-
+            if(mutation.target.localName === "title"){
+                if(mutation.target.baseURI.match(pattern)){
+                    if(currentItem !== mutation.target.baseURI ){ 
+                        console.log("RCS: From Homepage")
+                        counter = 0;
+                        currentItem = mutation.target.baseURI;
+                        subName = window.location.href.match(pattern)[0];
+                        subName = subName.slice(0, -1);
+                        findSubredditSortingParent(document.body);
+                    }
+                    
                 }
-                
             }
+            
+            
 
         }
 
