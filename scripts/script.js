@@ -5,7 +5,6 @@ const BEST_URL = "/best/";
 const TOP_URL = "/top/";
 const NEW_URL = "/new/";
 const REDDIT_BASE_URL =  "https://www.reddit.com";
-const SEPARATOR = "/";
 
 
 
@@ -119,35 +118,14 @@ function domObserver(){
                 }
                 
             }
-            /**
-             * Handling home button
-             */
-            if(mutation.target.baseURI === REDDIT_BASE_URL+SEPARATOR){
+            if( mutation.target.baseURI === REDDIT_BASE_URL+"/"){
                 if(currentItem !== null && currentItem !== mutation.target.baseURI ){ //currentItem won't be null when tab is active
                     counter = 0;
                     currentItem = mutation.target.baseURI;
                     findHomePageSortingParent(document.body);
-
                 }
                 
             }
-
-
-            
-            /**
-             * Handling subbreddits 
-             */
-            // if(mutation.target.baseURI === REDDIT_BASE_URL+"/r/reddevils/"){
-            //     if(true ){ //currentItem won't be null when tab is active
-            //         counter = 0;
-            //         currentItem = mutation.target.baseURI;
-            //         console.log("MUTAT SUBBB:",mutation.target.baseURI );
-            //         findHomePageSortingParent(document.body);
-            //     }
-
-            // }
-
-            
         }
 
         
