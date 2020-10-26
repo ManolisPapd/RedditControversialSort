@@ -7,10 +7,11 @@ const NEW_URL = "/new/";
 const REDDIT_BASE_URL =  "https://www.reddit.com";
 
 
+
 domObserver();
 
 var counter = 0;
-var currentItem = "";
+var currentItem = null;
 var controversialEnabled = false;
 
 findHomePageSortingParent(document.body);
@@ -34,9 +35,7 @@ function findHomePageSortingParent(element){
                 var menuParentDiv = element.parentElement.childNodes;
                 for(let menuItem of menuParentDiv){
                     if(menuItem.getAttribute("href") === CONTROVERSIAL_URL){
-                        console.log("Mutation: EINAI MESA");
                         controversialEnabled = true;
-
                     }
                 }
                 if(!controversialEnabled){
@@ -119,7 +118,16 @@ function domObserver(){
                 }
                 
             }
+            if( mutation.target.baseURI === REDDIT_BASE_URL+"/"){
+                if(currentItem !== null && currentItem !== mutation.target.baseURI ){ //currentItem won't be null when tab is active
+                    counter = 0;
+                    currentItem = mutation.target.baseURI;
+                    findHomePageSortingParent(document.body);
+                }
+                
+            }
         }
+
         
     });
 
