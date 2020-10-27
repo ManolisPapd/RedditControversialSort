@@ -83,8 +83,11 @@ function findHomePageSortingParent(element){
 }
 
 function findSubredditSortingParent(element){
-    
-    if(element.hasChildNodes()){              
+    //TODO transform it 
+    if(element.hasChildNodes()){     
+
+            
+        
         if(element.getAttribute("href") === subName+HOT_URL){
             
             if(counter === 1){
@@ -208,19 +211,25 @@ function domObserver(){
             if(mutation.target.localName === "title"){
                 if(mutation.target.baseURI.match(pattern)){
                     if(currentItem !== mutation.target.baseURI ){ 
-                        console.log("RCS: From Homepage")
                         counter = 0;
                         currentItem = mutation.target.baseURI;
                         subName = window.location.href.match(pattern)[0];
                         subName = subName.slice(0, -1);
+                        /**
+                         * window.location.href will have at some point /hot/ etc so slicing that part is needed
+                         * After the above slice, it will be f.e. "/r/SUB/hot"
+                         * Will check if /r/SUB/hot = subName+HOT_URL (by complete luck items have the same length)
+                         */
+                        slicedSubName = subName.slice(0, -4);
+                        if((subName + "/") === slicedSubName + HOT_URL){
+                            subName = slicedSubName;
+                        }
                         findSubredditSortingParent(document.body);
                     }
                     
                 }
             }
             
-            
-
         }
 
         
