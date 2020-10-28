@@ -24,7 +24,7 @@ addEventListener("load", function(){
     controversialEnabled = false;
     //Don't create the item if the first page is a subreddit
     if(!window.location.href.match(pattern)){
-        findHomePageSortingParent(document.body);
+        findSubredditSortingParent(document.body);
     }
     else{
         console.log("RCS: Controversial Item For Subreddit -> ", window.location.href);
@@ -86,8 +86,6 @@ function findHomePageSortingParent(element){
 function findSubredditSortingParent(element){
     //TODO transform it 
     if(element.hasChildNodes()){     
-
-            
         
         if(element.getAttribute("href") === subName+HOT_URL){
             
@@ -186,7 +184,7 @@ function domObserver(){
                     previousItem = currentItem;
                     currentItem = mutation.target.baseURI;
                     counter = 0;
-                    findHomePageSortingParent(document.body);
+                    findSubredditSortingParent(document.body);
                     
                 }
                 
@@ -199,7 +197,7 @@ function domObserver(){
                 if(currentItem !== null && currentItem !== mutation.target.baseURI ){ //currentItem won't be null when tab is active
                     counter = 0;
                     currentItem = mutation.target.baseURI;
-                    findHomePageSortingParent(document.body);
+                    findSubredditSortingParent(document.body);
                 }
             }
 
