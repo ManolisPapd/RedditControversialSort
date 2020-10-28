@@ -11,6 +11,7 @@ domObserver();
 
 var counter = 0;
 var currentItem = null;
+var previousItem = null;
 var controversialEnabled = false;
 var pattern = /[\/]r[\/].*/i;
 var subName = "";
@@ -182,6 +183,7 @@ function domObserver(){
                  * There are multiple mutations with the same baseURI and loading the item multiple times isn't efficient
                 **/
                 if(currentItem !== mutation.target.baseURI){
+                    previousItem = currentItem;
                     currentItem = mutation.target.baseURI;
                     counter = 0;
                     findHomePageSortingParent(document.body);
@@ -210,8 +212,10 @@ function domObserver(){
              */
             if(mutation.target.localName === "title"){
                 if(mutation.target.baseURI.match(pattern)){
+                    
                     if(currentItem !== mutation.target.baseURI ){ 
                         counter = 0;
+                        previousItem = currentItem;
                         currentItem = mutation.target.baseURI;
                         subName = window.location.href.match(pattern)[0];
                         subName = subName.slice(0, -1);
@@ -227,6 +231,15 @@ function domObserver(){
                         findSubredditSortingParent(document.body);
                     }
                     
+                }
+                else{ 
+                    if(previousItem !== currentItem){ //It is needed to capture navigation between pages
+                        counter = 0;
+                        previousItem = currentItem;
+                        currentItem = mutation.target.baseURI;
+                        subName = ""; //We are on homepage again
+                        findSubredditSortingParent(document.body);
+                    }
                 }
             }
             
