@@ -5,16 +5,23 @@
     "version": "0.9.0",
     "author": "mpapd",
     "icons": {
-        "16": "resources/images/16_rcs_icon.png",
-        "32": "resources/images/32_rcs_icon.png",
-        "48": "resources/images/48_rcs_icon.png",
-        "128": "resources/images/128_rcs_icon.png"
+        "16": "src/resources/images/16_rcs_icon.png",
+        "32": "src/resources/images/32_rcs_icon.png",
+        "48": "src/resources/images/48_rcs_icon.png",
+        "128": "src/resources/images/128_rcs_icon.png"
       },
     "content_scripts": [
         {
             "matches": ["https://www.reddit.com/", "https://www.reddit.com/*"],
-            "js": ["scripts/script.js"],
-            "css" : ["styles/style.css"]
+            "js": [
+                "src/scripts/main.js", 
+                "src/scripts/dom/dom_manipulation.js",
+                "src/scripts/values/attributes.js",
+                "src/scripts/dom/dom_element_finder.js",
+                "src/scripts/dom/dom_observer.js"
+            ],
+            "css" : ["src/styles/style.css"]
         }
     ]
+    
 }
