@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
-    "name" : "RCS",
+    "name" : "RCS - Reddit Controversial Sort",
     "description": "RCS enables the option for controversial sorting on Reddit's redesign.",
-    "version": "0.9.0",
+    "version": "0.9.5",
     "author": "mpapd",
     "icons": {
         "16": "src/resources/images/16_rcs_icon.png",
@@ -10,6 +10,9 @@
         "48": "src/resources/images/48_rcs_icon.png",
         "128": "src/resources/images/128_rcs_icon.png"
       },
+    "browser_action" :{
+        "default_popup": "src/view/popup.html"
+    },
     "content_scripts": [
         {
             "matches": ["https://www.reddit.com/", "https://www.reddit.com/*"],
