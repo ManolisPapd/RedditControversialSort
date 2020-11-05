@@ -5,7 +5,16 @@
 function addControversialItem(element){    
     /* Hyperlink properties */
     var controversialItem = document.createElement("a");
-    controversialItem.className = element.getAttribute("class").split(" ")[0]; //Split because the second part of class makes it appear selected
+    var classAttributes = element.getAttribute("class").split(" ");
+    //Issue-21. On Nov 6th 2020 they added more elements to the class. The second element makes the items appear selected, so it will be skipped.
+    var finalClassAttributes = "";
+    classAttributes.forEach((attribute, index) => {
+        if(index !== 1 || element.getAttribute("href") === HOT_URL){ //Issue-21. This is a handler for subreddits only
+            finalClassAttributes += attribute + " ";
+        }
+    });
+    console.log("RCS: ->", finalClassAttributes,element.getAttribute("href") !== HOT_URL)
+    controversialItem.className = finalClassAttributes; //Split because the second part of class makes it appear selected
     controversialItem.href = subName+CONTROVERSIAL_URL;
 
     /* svg class  */
