@@ -16,17 +16,15 @@ addEventListener("load", function(){
     currentItem = null;
     controversialEnabled = false;
     //Don't create the item if the first page is a subreddit
-    if(!window.location.href.match(pattern)){
-        findSortingParent(document.body);
-    }
-    else{
+    if(window.location.href.match(pattern)){
         console.log("RCS: Controversial Item For Subreddit -> ", window.location.href);
         subName = window.location.href.match(pattern)[0];
         subName = subName.slice(0, -1);
-        findSortingParent(document.body)
+        
     }
-    
+    findSortingParent(document.body);
  });
 
+ 
 
 

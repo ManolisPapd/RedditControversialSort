@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name" : "RCS - Reddit Controversial Sort",
     "description": "RCS enables the option for controversial sorting on Reddit's redesign.",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "author": "mpapd",
     "icons": {
         "16": "src/resources/images/16_rcs_icon.png",

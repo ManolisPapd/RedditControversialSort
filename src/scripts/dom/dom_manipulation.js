@@ -13,7 +13,6 @@ function addControversialItem(element){
             finalClassAttributes += attribute + " ";
         }
     });
-    console.log("RCS: ->", finalClassAttributes,element.getAttribute("href") !== HOT_URL)
     controversialItem.className = finalClassAttributes; //Split because the second part of class makes it appear selected
     controversialItem.href = subName+CONTROVERSIAL_URL;
 
