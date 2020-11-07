@@ -23,7 +23,10 @@
                 "src/scripts/dom/dom_element_finder.js",
                 "src/scripts/dom/dom_observer.js"
             ],
-            "css" : ["src/styles/style.css"]
+            "css" : [
+                "src/styles/popup.css",
+                "src/styles/page.css"
+            ]
         }
     ]
     

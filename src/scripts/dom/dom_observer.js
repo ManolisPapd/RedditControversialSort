@@ -48,9 +48,8 @@ function domObserver(){
                     
                     if(currentItem !== mutation.target.baseURI ){ 
                         counter = 0;
-                        console.log("RCS: SUB INSIDE",previousItem,currentItem)
-
-
+                        
+                        //Neede
                         previousItem = null;
 
                         currentItem = mutation.target.baseURI;

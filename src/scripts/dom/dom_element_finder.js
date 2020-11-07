@@ -5,14 +5,7 @@
  */
 function findSortingParent(element){
     if(element.hasChildNodes()){     
-
-        if(element.getAttribute("href") !== null){
-            // console.log("RCS: FIX",element.getAttribute("href"), subName )
-
-        }
         if(element.getAttribute("href") === subName+HOT_URL){
-            // console.log("RCS: HOT",element.getAttribute("href"), subName )
-
             if(counter === 1){
                 /*  Handling when controversial options activated
                     Checking if controversial option is activated in order to deactivate it.
