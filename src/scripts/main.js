@@ -5,6 +5,16 @@ var controversialEnabled = false;
 const pattern = /[\/]r[\/].*/i;
 var subName = "";
 
+/**
+ * Making the sorting menu bar invisible 
+ */
+var style = document.documentElement.appendChild(document.createElement('style'));
+style.textContent = `._2PAz5_NMDCV5XtywB9mVpg,
+.icon.icon-menu {
+    visibility: hidden;
+}`;
+
+
 //Controversial item will be added after DOM is loaded
 addEventListener("load", function(){ 
     domObserver();

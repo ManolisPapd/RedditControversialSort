@@ -23,9 +23,9 @@
                 "src/scripts/dom/dom_element_finder.js",
                 "src/scripts/dom/dom_observer.js"
             ],
+            "run_at": "document_start",
             "css" : [
-                "src/styles/popup.css",
-                "src/styles/page.css"
+                "src/styles/popup.css"
             ]
         }
     ]

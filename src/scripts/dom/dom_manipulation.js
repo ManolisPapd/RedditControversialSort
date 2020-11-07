@@ -36,9 +36,8 @@ function addControversialItem(element){
     element.parentElement.appendChild(controversialItem);
 
     //Handling css to reappear menu items
-    var styles = `
-    ._2PAz5_NMDCV5XtywB9mVpg,
-    .icon.icon-menu._2L8b_l8zFzAkWuMyZJ1_vg {
+    var styles = `.` + classAttributes[0]+`,
+    .icon.icon-menu {
         visibility: visible;
     }
 
