@@ -48,7 +48,11 @@ function domObserver(){
                     
                     if(currentItem !== mutation.target.baseURI ){ 
                         counter = 0;
-                        previousItem = currentItem;
+                        console.log("RCS: SUB INSIDE",previousItem,currentItem)
+
+
+                        previousItem = null;
+
                         currentItem = mutation.target.baseURI;
                         subName = window.location.href.match(pattern)[0];
                         subName = subName.slice(0, -1);
@@ -71,7 +75,9 @@ function domObserver(){
                         previousItem = currentItem;
                         currentItem = mutation.target.baseURI;
                         subName = ""; //We are on homepage again
+                        
                         findSortingParent(document.body);
+
                     }
                 }
             }
