@@ -4,13 +4,11 @@
  * @param {*} element 
  */
 function findSortingParent(element){
-    if(element.hasChildNodes()){    
+    if(element.hasChildNodes()){     
         
-        if(element.getAttribute("href") !== null &&
-         (element.getAttribute("href").toUpperCase() === (subName+HOT_URL).toUpperCase()||
-         element.getAttribute("href").toUpperCase() === (subName+"HOT").toUpperCase())){
+        if(element.getAttribute("href") === subName+HOT_URL){
+            
             if(counter === 1){
-
                 /*  Handling when controversial options activated
                     Checking if controversial option is activated in order to deactivate it.
                     Two cases when controversial item present:
@@ -28,37 +26,20 @@ function findSortingParent(element){
                         controversialEnabled = true;
                     }
                 }
-                
-                console.log("RCS: RAID", previousItem)
                 if(!controversialEnabled){
-                    console.log("RCS: YEPfhgbdfvdcxs")
-
-
                     /**
                      * Handling Reddit's controversial item, which appears two steps above.
                      */
                     var menuGrandParentDiv = element.parentElement.parentElement.childNodes;
-                    if((menuGrandParentDiv.length > 2 
-                        && menuGrandParentDiv[2].getAttribute("href") !== subName+CONTROVERSIAL_URL) 
-                        ){ //Second check is for user page
-                            addControversialItem(element);
-                    }
-                    else{
-                        //Handling css to reappear menu items
-                        var styleSheet = document.createElement("style");
-                        styleSheet.innerText = styles;
-
-                        element.appendChild(styleSheet);
+                    if(menuGrandParentDiv[2].getAttribute("href") !== subName+CONTROVERSIAL_URL){
+                        addControversialItem(element);
                     }
                 }
-                
-                
 
             }
             else{
                 counter++;
             }
-            
             
         }
         else{

@@ -1,0 +1,31 @@
+html{
+    min-height:200px;
+    min-width:360px;
+    
+}
+
+body {
+    border-radius: 25px;
+    background-color: rgb(0, 0, 0);
+    
+}
+
+#rcs{
+    margin-top: 5px;
+    margin-left: 80px;
+}
+#chromewebstore, #github{
+    box-shadow: 2px 2px #888888;
+    margin-right: auto;
+}
+
+#chromewebstore:hover{
+
+    content:url("../resources/images/chromewebstore_hover.png");
+}
+
+#github:hover{
+
+    content:url("../resources/images/github_hover.png");
+}
+

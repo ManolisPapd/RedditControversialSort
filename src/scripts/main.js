@@ -2,19 +2,8 @@ var counter = 0;
 var currentItem = null;
 var previousItem = null;
 var controversialEnabled = false;
+const pattern = /[\/]r[\/].*/i;
 var subName = "";
-var fromProfilePage = true;
-
-/**
- * Making the sorting menu bar invisible 
- */
-var style = document.documentElement.appendChild(document.createElement('style'));
-style.textContent = `._2PAz5_NMDCV5XtywB9mVpg,
-.icon.icon-menu,
-._29FQ-HlVE3aNu0iB8mO-ey.GzkzdrqG-NjAYH7eKJan4  {
-    visibility: hidden;
-}`;
-
 
 //Controversial item will be added after DOM is loaded
 addEventListener("load", function(){ 
@@ -27,33 +16,17 @@ addEventListener("load", function(){
     currentItem = null;
     controversialEnabled = false;
     //Don't create the item if the first page is a subreddit
-    if(window.location.href.match(pattern)){
+    if(!window.location.href.match(pattern)){
+        findSortingParent(document.body);
+    }
+    else{
         console.log("RCS: Controversial Item For Subreddit -> ", window.location.href);
         subName = window.location.href.match(pattern)[0];
         subName = subName.slice(0, -1);
-        subNameSplit = subName.split("/")
-        if(subNameSplit.length > 3){ //Needed to remove from name /hot /best etc.
-            subName = subName.slice(0, -1 * (subNameSplit[3].length) - 1);
-        }
-        findSortingParent(document.body);
+        findSortingParent(document.body)
     }
-    else if(window.location.href.match(user_profile_pattern)){ //For User page, not yet implemented
-        console.log("RCS: NOT IMPLEMENTED for profile page -> ", window.location.href);
-        var style = document.documentElement.appendChild(document.createElement('style'));
-        style.textContent = `._2PAz5_NMDCV5XtywB9mVpg,
-        .icon.icon-menu,
-        ._29FQ-HlVE3aNu0iB8mO-ey.GzkzdrqG-NjAYH7eKJan4  {
-            visibility: visible;
-        }`;
-        previousItem = null;
-        currentItem = mutation.target.baseURI;
-        // subName = window.location.href.match(user_profile_pattern)[0] + USER_PAGE_URL;
-    }
-    else{
-        findSortingParent(document.body);
-    }
+    
  });
 
- 
 
 
