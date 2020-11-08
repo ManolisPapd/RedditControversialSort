@@ -8,12 +8,17 @@ function addControversialItem(element){
     var classAttributes = element.getAttribute("class").split(" ");
     //Issue-21. On Nov 6th 2020 they added more elements to the class. The second element makes the items appear selected, so it will be skipped.
     var finalClassAttributes = "";
-    classAttributes.forEach((attribute, index) => {
-        if(index !== 1 || element.getAttribute("href") === HOT_URL){ //Issue-21. This is a handler for subreddits only
-            finalClassAttributes += attribute + " ";
-        }
-    });
-    console.log("RCS: ->", finalClassAttributes,element.getAttribute("href") !== HOT_URL)
+    if(window.location.href.match(user_profile_pattern)){ //All attributes should be included on user page.
+        finalClassAttributes = element.getAttribute("class");
+    }
+    else{ //Issue-21. This is a handler for subreddits only. 
+        classAttributes.forEach((attribute, index) => {
+            if(index !== 1 || element.getAttribute("href") === HOT_URL){ 
+                finalClassAttributes += attribute + " ";
+            }
+        });
+    }
+    
     controversialItem.className = finalClassAttributes; //Split because the second part of class makes it appear selected
     controversialItem.href = subName+CONTROVERSIAL_URL;
 
@@ -35,4 +40,9 @@ function addControversialItem(element){
     controversialItem.appendChild(divControversialClass);
 
     element.parentElement.appendChild(controversialItem);
+
+    //Handling css to reappear menu items
+    var styleSheet = document.createElement("style");
+    styleSheet.innerText = styles;
+    element.appendChild(styleSheet)
 }
