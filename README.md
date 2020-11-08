@@ -7,5 +7,5 @@ By installing RCS, a new item will be presented to the sorting menu bar.
 
 ![alt text](https://i.imgur.com/tuCHM5k.png)
 
-[(not working) URL to be updated](https://www.google.com)
+[Click here to install it from Chrome Web Store](https://chrome.google.com/webstore/detail/rcs-reddit-controversial/mmpljpddoeiaeikoeaakhgmhhddaiabb)
 
