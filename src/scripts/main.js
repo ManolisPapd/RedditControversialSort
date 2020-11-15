@@ -5,7 +5,7 @@ var controversialEnabled = false;
 var subName = "";
 var fromProfilePage = true;
 
-var menu = {
+const menu = {
 
     visible: `._2pUO1Sfe7WlIHvq6goN3Pz > *,
         .icon.icon-menu,
