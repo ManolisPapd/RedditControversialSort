@@ -109,11 +109,7 @@ function domObserver(){
         else if(fromProfilePage){
             
             var style = document.documentElement.appendChild(document.createElement('style'));
-            style.textContent = `._2PAz5_NMDCV5XtywB9mVpg,
-            .icon.icon-menu,
-            ._29FQ-HlVE3aNu0iB8mO-ey.GzkzdrqG-NjAYH7eKJan4  {
-                visibility: visible;
-            }`;
+            style.textContent = menu.visible;
             fromProfilePage = false;
             currentItem = PROFILE;
             

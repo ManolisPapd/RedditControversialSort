@@ -43,6 +43,6 @@ function addControversialItem(element){
 
     //Handling css to reappear menu items
     var styleSheet = document.createElement("style");
-    styleSheet.innerText = styles;
+    styleSheet.innerText = menu.visible;
     element.appendChild(styleSheet)
 }

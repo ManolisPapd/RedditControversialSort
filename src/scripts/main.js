@@ -5,15 +5,27 @@ var controversialEnabled = false;
 var subName = "";
 var fromProfilePage = true;
 
+var menu = {
+
+    visible: `._2pUO1Sfe7WlIHvq6goN3Pz > *,
+        .icon.icon-menu,
+        ._29FQ-HlVE3aNu0iB8mO-ey.GzkzdrqG-NjAYH7eKJan4 {
+            visibility: visible;
+        }`,
+    invisible: `._2pUO1Sfe7WlIHvq6goN3Pz > *,
+    .icon.icon-menu,
+    ._29FQ-HlVE3aNu0iB8mO-ey.GzkzdrqG-NjAYH7eKJan4 {
+        visibility: hidden;
+    }`
+
+  
+  };
+
 /**
  * Making the sorting menu bar invisible 
  */
 var style = document.documentElement.appendChild(document.createElement('style'));
-style.textContent = `._2PAz5_NMDCV5XtywB9mVpg,
-.icon.icon-menu,
-._29FQ-HlVE3aNu0iB8mO-ey.GzkzdrqG-NjAYH7eKJan4  {
-    visibility: hidden;
-}`;
+style.textContent = menu.invisible;
 
 
 //Controversial item will be added after DOM is loaded
@@ -40,11 +52,7 @@ addEventListener("load", function(){
     else if(window.location.href.match(user_profile_pattern)){ //For User page, not yet implemented
         console.log("RCS: NOT IMPLEMENTED for profile page -> ", window.location.href);
         var style = document.documentElement.appendChild(document.createElement('style'));
-        style.textContent = `._2PAz5_NMDCV5XtywB9mVpg,
-        .icon.icon-menu,
-        ._29FQ-HlVE3aNu0iB8mO-ey.GzkzdrqG-NjAYH7eKJan4  {
-            visibility: visible;
-        }`;
+        style.textContent = menu.visible;
         previousItem = null;
         currentItem = mutation.target.baseURI;
         // subName = window.location.href.match(user_profile_pattern)[0] + USER_PAGE_URL;
