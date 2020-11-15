@@ -29,10 +29,7 @@ function findSortingParent(element){
                     }
                 }
                 
-                console.log("RCS: RAID", previousItem)
                 if(!controversialEnabled){
-                    console.log("RCS: YEPfhgbdfvdcxs")
-
 
                     /**
                      * Handling Reddit's controversial item, which appears two steps above.

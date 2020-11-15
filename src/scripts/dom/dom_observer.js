@@ -54,7 +54,6 @@ function domObserver(){
                         if(currentItem !== mutation.target.baseURI ){ 
 
                             counter = 0;
-                            console.log("RCS: ENEMY", previousItem)
                             if(previousItem !== REDDIT_BASE_URL){ //Bug caused from navigating to user profile
                                 previousItem = null;
                                 controversialEnabled = false;
@@ -95,7 +94,6 @@ function domObserver(){
                             currentItem = mutation.target.baseURI;
                             subName = ""; //We are on homepage again
                             fromProfilePage = true;
-                            console.log("RCS: BASE", previousItem)
 
                             findSortingParent(document.body);
 
