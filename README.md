@@ -10,9 +10,14 @@
 
 ## Description
 
-RCS is a Chrome extension for Reddit redesign that allows user to sort by controversial.
+RCS is a Chrome extension for Reddit redesign that allows users to sort by controversial.
+By installing RCS, a new item will be presented to the sorting menu bar titled **Controversial**.
 
-By installing RCS, a new item will be presented to the sorting menu bar.
+**Controversial** sorting is available on everywhere on Reddit:
+* **Subreddits**
+* **Homepage**
+* **/r/All**
+* **/r/Popular**
 
 ## Screenshots
 
