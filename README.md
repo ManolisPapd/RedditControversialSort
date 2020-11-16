@@ -14,7 +14,11 @@ RCS is a Chrome extension for Reddit redesign that allows user to sort by contro
 
 By installing RCS, a new item will be presented to the sorting menu bar.
 
-![alt text](https://i.imgur.com/wTD9QGz.png)
+## Screenshots
 
-![alt text](https://i.imgur.com/tuCHM5k.png)
+<p>
+  <img width="500" src="https://i.imgur.com/wTD9QGz.png">
+  <img width="500" src="https://i.imgur.com/tuCHM5k.png">
+</p>
+
 
