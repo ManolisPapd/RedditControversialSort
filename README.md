@@ -1,7 +1,5 @@
-
-
 <p align="center"><img src="https://lh3.googleusercontent.com/5NHLCryWlTjyLsbXQhr2wCiUuZeJWc5xpNA61_0P9SNMNM6srn6-VLKzuGIrWicDkJ3NhZ20=w128-h128-e365-rj-sc0x00ffffff" width="100" height="100"></p>
-<h1 align="center">RedditControversialSort</h1>
+<h1 align="center">RCS - RedditControversialSort</h1>
 
 <p align="center">
   </br></br>
